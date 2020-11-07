@@ -34,7 +34,7 @@ relationship ManyToOne {
 }
 
 relationship OneToMany {
-    Image{images} to Treat,
+    Treat{treat} to Images,
 }
 
 paginate Donator, Treat with pagination
