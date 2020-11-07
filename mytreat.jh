@@ -3,7 +3,8 @@ entity Treat{
  title String,
  description String,
  purchaseLink String,
- generatedLink String
+ generatedLink String,
+ status Status
 }
 
 entity Image{
