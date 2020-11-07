@@ -22,7 +22,7 @@ entity Donator{
 enum Status{
  NEW,
  PENDING,
- APPROVED
+ APPROVED,
  CANCELLED,
  FINISHED
 }
