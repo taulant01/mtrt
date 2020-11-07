@@ -22,6 +22,7 @@ import static org.hamcrest.Matchers.hasItem;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+import com.mycompany.myapp.domain.enumeration.Status;
 /**
  * Integration tests for the {@link TreatResource} REST controller.
  */
@@ -44,6 +45,9 @@ public class TreatResourceIT {
 
     private static final String DEFAULT_GENERATED_LINK = "AAAAAAAAAA";
     private static final String UPDATED_GENERATED_LINK = "BBBBBBBBBB";
+
+    private static final Status DEFAULT_STATUS = Status.NEW;
+    private static final Status UPDATED_STATUS = Status.PENDING;
 
     @Autowired
     private TreatRepository treatRepository;
@@ -71,7 +75,8 @@ public class TreatResourceIT {
             .title(DEFAULT_TITLE)
             .description(DEFAULT_DESCRIPTION)
             .purchaseLink(DEFAULT_PURCHASE_LINK)
-            .generatedLink(DEFAULT_GENERATED_LINK);
+            .generatedLink(DEFAULT_GENERATED_LINK)
+            .status(DEFAULT_STATUS);
         return treat;
     }
     /**
@@ -86,7 +91,8 @@ public class TreatResourceIT {
             .title(UPDATED_TITLE)
             .description(UPDATED_DESCRIPTION)
             .purchaseLink(UPDATED_PURCHASE_LINK)
-            .generatedLink(UPDATED_GENERATED_LINK);
+            .generatedLink(UPDATED_GENERATED_LINK)
+            .status(UPDATED_STATUS);
         return treat;
     }
 
@@ -114,6 +120,7 @@ public class TreatResourceIT {
         assertThat(testTreat.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
         assertThat(testTreat.getPurchaseLink()).isEqualTo(DEFAULT_PURCHASE_LINK);
         assertThat(testTreat.getGeneratedLink()).isEqualTo(DEFAULT_GENERATED_LINK);
+        assertThat(testTreat.getStatus()).isEqualTo(DEFAULT_STATUS);
     }
 
     @Test
@@ -151,7 +158,8 @@ public class TreatResourceIT {
             .andExpect(jsonPath("$.[*].title").value(hasItem(DEFAULT_TITLE)))
             .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION)))
             .andExpect(jsonPath("$.[*].purchaseLink").value(hasItem(DEFAULT_PURCHASE_LINK)))
-            .andExpect(jsonPath("$.[*].generatedLink").value(hasItem(DEFAULT_GENERATED_LINK)));
+            .andExpect(jsonPath("$.[*].generatedLink").value(hasItem(DEFAULT_GENERATED_LINK)))
+            .andExpect(jsonPath("$.[*].status").value(hasItem(DEFAULT_STATUS.toString())));
     }
     
     @Test
@@ -169,7 +177,8 @@ public class TreatResourceIT {
             .andExpect(jsonPath("$.title").value(DEFAULT_TITLE))
             .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION))
             .andExpect(jsonPath("$.purchaseLink").value(DEFAULT_PURCHASE_LINK))
-            .andExpect(jsonPath("$.generatedLink").value(DEFAULT_GENERATED_LINK));
+            .andExpect(jsonPath("$.generatedLink").value(DEFAULT_GENERATED_LINK))
+            .andExpect(jsonPath("$.status").value(DEFAULT_STATUS.toString()));
     }
     @Test
     @Transactional
@@ -196,7 +205,8 @@ public class TreatResourceIT {
             .title(UPDATED_TITLE)
             .description(UPDATED_DESCRIPTION)
             .purchaseLink(UPDATED_PURCHASE_LINK)
-            .generatedLink(UPDATED_GENERATED_LINK);
+            .generatedLink(UPDATED_GENERATED_LINK)
+            .status(UPDATED_STATUS);
 
         restTreatMockMvc.perform(put("/api/treats")
             .contentType(MediaType.APPLICATION_JSON)
@@ -212,6 +222,7 @@ public class TreatResourceIT {
         assertThat(testTreat.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
         assertThat(testTreat.getPurchaseLink()).isEqualTo(UPDATED_PURCHASE_LINK);
         assertThat(testTreat.getGeneratedLink()).isEqualTo(UPDATED_GENERATED_LINK);
+        assertThat(testTreat.getStatus()).isEqualTo(UPDATED_STATUS);
     }
 
     @Test

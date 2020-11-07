@@ -1,0 +1,12 @@
+{
+  "mtrtApp": {
+    "Status": {
+      "null": "",
+      "NEW": "NEW",
+      "PENDING": "PENDING",
+      "APPROVED": "APPROVED",
+      "CANCELLED": "CANCELLED",
+      "FINISHED": "FINISHED"
+    }
+  }
+}

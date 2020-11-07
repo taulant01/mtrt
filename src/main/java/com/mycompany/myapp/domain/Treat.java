@@ -6,6 +6,8 @@ import javax.persistence.*;
 
 import java.io.Serializable;
 
+import com.mycompany.myapp.domain.enumeration.Status;
+
 /**
  * A Treat.
  */
@@ -34,6 +36,10 @@ public class Treat implements Serializable {
 
     @Column(name = "generated_link")
     private String generatedLink;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status")
+    private Status status;
 
     @ManyToOne
     @JsonIgnoreProperties(value = "treats", allowSetters = true)
@@ -117,6 +123,19 @@ public class Treat implements Serializable {
         this.generatedLink = generatedLink;
     }
 
+    public Status getStatus() {
+        return status;
+    }
+
+    public Treat status(Status status) {
+        this.status = status;
+        return this;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
     public User getUser() {
         return user;
     }
@@ -170,6 +189,7 @@ public class Treat implements Serializable {
             ", description='" + getDescription() + "'" +
             ", purchaseLink='" + getPurchaseLink() + "'" +
             ", generatedLink='" + getGeneratedLink() + "'" +
+            ", status='" + getStatus() + "'" +
             "}";
     }
 }

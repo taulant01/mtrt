@@ -21,6 +21,7 @@
       "description": "Description",
       "purchaseLink": "Purchase Link",
       "generatedLink": "Generated Link",
+      "status": "Status",
       "user": "User",
       "image": "Image"
     }

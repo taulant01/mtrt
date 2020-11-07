@@ -28,6 +28,7 @@
                     <th scope="col"  jhiSortBy="description"><span jhiTranslate="mtrtApp.treat.description">Description</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="purchaseLink"><span jhiTranslate="mtrtApp.treat.purchaseLink">Purchase Link</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="generatedLink"><span jhiTranslate="mtrtApp.treat.generatedLink">Generated Link</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="status"><span jhiTranslate="mtrtApp.treat.status">Status</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="user.id"><span jhiTranslate="mtrtApp.treat.user">User</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="image.id"><span jhiTranslate="mtrtApp.treat.image">Image</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"></th>
@@ -41,6 +42,7 @@
                     <td>{{ treat.description }}</td>
                     <td>{{ treat.purchaseLink }}</td>
                     <td>{{ treat.generatedLink }}</td>
+                    <td jhiTranslate="{{ 'mtrtApp.Status.' + treat.status }}">{{ treat.status }}</td>
                     <td>
                         {{ treat.user?.id }}
                     </td>

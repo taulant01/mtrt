@@ -28,6 +28,10 @@
                 <dd>
                     <span>{{ treat.generatedLink }}</span>
                 </dd>
+                <dt><span jhiTranslate="mtrtApp.treat.status">Status</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'mtrtApp.Status.' + treat.status }}">{{ treat.status }}</span>
+                </dd>
                 <dt><span jhiTranslate="mtrtApp.treat.user">User</span></dt>
                 <dd>
                     {{ treat.user?.id }}
