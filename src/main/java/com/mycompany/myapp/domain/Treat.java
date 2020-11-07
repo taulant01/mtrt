@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.*;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 import com.mycompany.myapp.domain.enumeration.Status;
 
@@ -41,13 +43,12 @@ public class Treat implements Serializable {
     @Column(name = "status")
     private Status status;
 
+    @OneToMany(mappedBy = "treat")
+    private Set<Image> treats = new HashSet<>();
+
     @ManyToOne
     @JsonIgnoreProperties(value = "treats", allowSetters = true)
     private User user;
-
-    @ManyToOne
-    @JsonIgnoreProperties(value = "images", allowSetters = true)
-    private Image image;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
@@ -136,6 +137,31 @@ public class Treat implements Serializable {
         this.status = status;
     }
 
+    public Set<Image> getTreats() {
+        return treats;
+    }
+
+    public Treat treats(Set<Image> images) {
+        this.treats = images;
+        return this;
+    }
+
+    public Treat addTreat(Image image) {
+        this.treats.add(image);
+        image.setTreat(this);
+        return this;
+    }
+
+    public Treat removeTreat(Image image) {
+        this.treats.remove(image);
+        image.setTreat(null);
+        return this;
+    }
+
+    public void setTreats(Set<Image> images) {
+        this.treats = images;
+    }
+
     public User getUser() {
         return user;
     }
@@ -147,19 +173,6 @@ public class Treat implements Serializable {
 
     public void setUser(User user) {
         this.user = user;
-    }
-
-    public Image getImage() {
-        return image;
-    }
-
-    public Treat image(Image image) {
-        this.image = image;
-        return this;
-    }
-
-    public void setImage(Image image) {
-        this.image = image;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 

@@ -24,6 +24,7 @@
                 <tr>
                     <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
                     <th scope="col" ><span jhiTranslate="mtrtApp.image.image">Image</span></th>
+                    <th scope="col" ><span jhiTranslate="mtrtApp.image.treat">Treat</span></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -35,6 +36,11 @@
                             <img [src]="'data:' + image.imageContentType + ';base64,' + image.image" style="max-height: 30px;" alt="image image"/>
                         </a>
                         <span *ngIf="image.image">{{ image.imageContentType }}, {{ byteSize(image.image) }}</span>
+                    </td>
+                    <td>
+                        <div *ngIf="image.treat">
+                            <a [routerLink]="['/treat', image.treat?.id, 'view']" >{{ image.treat?.id }}</a>
+                        </div>
                     </td>
                     <td class="text-right">
                         <div class="btn-group">

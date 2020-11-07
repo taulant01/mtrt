@@ -36,12 +36,6 @@
                 <dd>
                     {{ treat.user?.id }}
                 </dd>
-                <dt><span jhiTranslate="mtrtApp.treat.image">Image</span></dt>
-                <dd>
-                    <div *ngIf="treat.image">
-                        <a [routerLink]="['/image', treat.image?.id, 'view']">{{ treat.image?.id }}</a>
-                    </div>
-                </dd>
             </dl>
 
             <button type="submit"

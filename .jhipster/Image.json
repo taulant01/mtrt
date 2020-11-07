@@ -9,10 +9,11 @@
   ],
   "relationships": [
     {
-      "relationshipType": "one-to-many",
+      "relationshipType": "many-to-one",
       "otherEntityName": "treat",
-      "otherEntityRelationshipName": "image",
-      "relationshipName": "images"
+      "otherEntityRelationshipName": "treat",
+      "relationshipName": "treat",
+      "otherEntityField": "id"
     }
   ],
   "changelogDate": "20201107173630",

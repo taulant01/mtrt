@@ -1,11 +1,10 @@
 package com.mycompany.myapp.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * A Image.
@@ -28,8 +27,9 @@ public class Image implements Serializable {
     @Column(name = "image_content_type")
     private String imageContentType;
 
-    @OneToMany(mappedBy = "image")
-    private Set<Treat> images = new HashSet<>();
+    @ManyToOne
+    @JsonIgnoreProperties(value = "treats", allowSetters = true)
+    private Treat treat;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
@@ -66,29 +66,17 @@ public class Image implements Serializable {
         this.imageContentType = imageContentType;
     }
 
-    public Set<Treat> getImages() {
-        return images;
+    public Treat getTreat() {
+        return treat;
     }
 
-    public Image images(Set<Treat> treats) {
-        this.images = treats;
+    public Image treat(Treat treat) {
+        this.treat = treat;
         return this;
     }
 
-    public Image addImages(Treat treat) {
-        this.images.add(treat);
-        treat.setImage(this);
-        return this;
-    }
-
-    public Image removeImages(Treat treat) {
-        this.images.remove(treat);
-        treat.setImage(null);
-        return this;
-    }
-
-    public void setImages(Set<Treat> treats) {
-        this.images = treats;
+    public void setTreat(Treat treat) {
+        this.treat = treat;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 
