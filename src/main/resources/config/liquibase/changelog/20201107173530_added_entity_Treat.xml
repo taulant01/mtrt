@@ -30,6 +30,9 @@
             <column name="generated_link" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
+            <column name="status" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
             <column name="user_id" type="bigint">
                 <constraints nullable="true" />
             </column>
@@ -64,6 +67,7 @@
             <column name="description" type="string"/>
             <column name="purchase_link" type="string"/>
             <column name="generated_link" type="string"/>
+            <column name="status" type="string"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
         </loadData>
     </changeSet>

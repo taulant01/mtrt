@@ -2,6 +2,7 @@ import { TestBed, getTestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { TreatService } from 'app/entities/treat/treat.service';
 import { ITreat, Treat } from 'app/shared/model/treat.model';
+import { Status } from 'app/shared/model/enumerations/status.model';
 
 describe('Service Tests', () => {
   describe('Treat Service', () => {
@@ -20,7 +21,7 @@ describe('Service Tests', () => {
       service = injector.get(TreatService);
       httpMock = injector.get(HttpTestingController);
 
-      elemDefault = new Treat(0, 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 'AAAAAAA');
+      elemDefault = new Treat(0, 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', Status.NEW);
     });
 
     describe('Service methods', () => {
@@ -59,6 +60,7 @@ describe('Service Tests', () => {
             description: 'BBBBBB',
             purchaseLink: 'BBBBBB',
             generatedLink: 'BBBBBB',
+            status: 'BBBBBB',
           },
           elemDefault
         );
@@ -80,6 +82,7 @@ describe('Service Tests', () => {
             description: 'BBBBBB',
             purchaseLink: 'BBBBBB',
             generatedLink: 'BBBBBB',
+            status: 'BBBBBB',
           },
           elemDefault
         );

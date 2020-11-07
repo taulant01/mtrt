@@ -20,6 +20,11 @@
     {
       "fieldName": "generatedLink",
       "fieldType": "String"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "Status",
+      "fieldValues": "NEW,PENDING,APPROVED,CANCELLED,FINISHED"
     }
   ],
   "relationships": [

@@ -1,5 +1,6 @@
 import { IUser } from 'app/core/user/user.model';
 import { IImage } from 'app/shared/model/image.model';
+import { Status } from 'app/shared/model/enumerations/status.model';
 
 export interface ITreat {
   id?: number;
@@ -8,6 +9,7 @@ export interface ITreat {
   description?: string;
   purchaseLink?: string;
   generatedLink?: string;
+  status?: Status;
   user?: IUser;
   image?: IImage;
 }
@@ -20,6 +22,7 @@ export class Treat implements ITreat {
     public description?: string,
     public purchaseLink?: string,
     public generatedLink?: string,
+    public status?: Status,
     public user?: IUser,
     public image?: IImage
   ) {}

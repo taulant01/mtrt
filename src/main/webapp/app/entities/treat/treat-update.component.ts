@@ -30,6 +30,7 @@ export class TreatUpdateComponent implements OnInit {
     description: [],
     purchaseLink: [],
     generatedLink: [],
+    status: [],
     user: [],
     image: [],
   });
@@ -60,6 +61,7 @@ export class TreatUpdateComponent implements OnInit {
       description: treat.description,
       purchaseLink: treat.purchaseLink,
       generatedLink: treat.generatedLink,
+      status: treat.status,
       user: treat.user,
       image: treat.image,
     });
@@ -88,6 +90,7 @@ export class TreatUpdateComponent implements OnInit {
       description: this.editForm.get(['description'])!.value,
       purchaseLink: this.editForm.get(['purchaseLink'])!.value,
       generatedLink: this.editForm.get(['generatedLink'])!.value,
+      status: this.editForm.get(['status'])!.value,
       user: this.editForm.get(['user'])!.value,
       image: this.editForm.get(['image'])!.value,
     };
