@@ -29,17 +29,16 @@
   ],
   "relationships": [
     {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "image",
+      "otherEntityRelationshipName": "treat",
+      "relationshipName": "treat"
+    },
+    {
       "relationshipType": "many-to-one",
       "otherEntityName": "user",
       "otherEntityRelationshipName": "treat",
       "relationshipName": "user",
-      "otherEntityField": "id"
-    },
-    {
-      "relationshipType": "many-to-one",
-      "otherEntityName": "image",
-      "otherEntityRelationshipName": "images",
-      "relationshipName": "image",
       "otherEntityField": "id"
     }
   ],
