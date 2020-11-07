@@ -1,0 +1,38 @@
+entity Treat{
+ crock String,
+ title String,
+ description String,
+ purchaseLink String,
+ generatedLink String
+}
+
+entity Image{
+ image ImageBlob
+}
+
+entity Donator{
+  name String,
+  surname String,
+  paymentDate LocalDate,
+  amount BigDecimal,
+  message String,
+  anonymous Boolean
+}
+
+enum Status{
+ NEW,
+ PENDING,
+ APPROVED
+ CANCELLED,
+ FINISHED
+}
+
+relationship ManyToOne {
+    Treat{user} to User,
+    Image{images} to Treat,
+    Donator{donators} to Treat
+}
+
+paginate Donator, Treat with pagination
+
+service all with serviceImpl
