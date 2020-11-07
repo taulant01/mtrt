@@ -28,14 +28,6 @@
                     <input type="hidden" class="form-control" name="imageContentType" id="field_imageContentType"
                            formControlName="imageContentType" />
                 </div>
-
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="mtrtApp.image.images" for="field_images">Images</label>
-                    <select class="form-control" id="field_images" name="images" formControlName="images">
-                        <option [ngValue]="null"></option>
-                        <option [ngValue]="treatOption.id === editForm.get('images')!.value?.id ? editForm.get('images')!.value : treatOption" *ngFor="let treatOption of treats; trackBy: trackById">{{ treatOption.id }}</option>
-                    </select>
-                </div>
             </div>
 
             <div>

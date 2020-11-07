@@ -21,7 +21,8 @@
       "description": "Description",
       "purchaseLink": "Purchase Link",
       "generatedLink": "Generated Link",
-      "user": "User"
+      "user": "User",
+      "image": "Image"
     }
   }
 }

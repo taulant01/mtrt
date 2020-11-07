@@ -29,6 +29,13 @@
       "otherEntityRelationshipName": "treat",
       "relationshipName": "user",
       "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "image",
+      "otherEntityRelationshipName": "images",
+      "relationshipName": "image",
+      "otherEntityField": "id"
     }
   ],
   "changelogDate": "20201107173530",

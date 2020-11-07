@@ -29,8 +29,11 @@ enum Status{
 
 relationship ManyToOne {
     Treat{user} to User,
-    Image{images} to Treat,
     Donator{donators} to Treat
+}
+
+relationship OneToMany {
+    Image{images} to Treat,
 }
 
 paginate Donator, Treat with pagination

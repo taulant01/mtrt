@@ -4,9 +4,9 @@ export interface IImage {
   id?: number;
   imageContentType?: string;
   image?: any;
-  images?: ITreat;
+  images?: ITreat[];
 }
 
 export class Image implements IImage {
-  constructor(public id?: number, public imageContentType?: string, public image?: any, public images?: ITreat) {}
+  constructor(public id?: number, public imageContentType?: string, public image?: any, public images?: ITreat[]) {}
 }

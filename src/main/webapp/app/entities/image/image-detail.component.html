@@ -17,12 +17,6 @@
                         {{ image.imageContentType }}, {{ byteSize(image.image) }}
                     </div>
                 </dd>
-                <dt><span jhiTranslate="mtrtApp.image.images">Images</span></dt>
-                <dd>
-                    <div *ngIf="image.images">
-                        <a [routerLink]="['/treat', image.images?.id, 'view']">{{ image.images?.id }}</a>
-                    </div>
-                </dd>
             </dl>
 
             <button type="submit"
