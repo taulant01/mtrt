@@ -1,0 +1,87 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="mtrtApp.donator.home.title">Donators</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-donator" [routerLink]="['/donator/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="mtrtApp.donator.home.createLabel">
+            Create a new Donator
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="donators?.length === 0">
+        <span jhiTranslate="mtrtApp.donator.home.notFound">No donators found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="donators && donators.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="name"><span jhiTranslate="mtrtApp.donator.name">Name</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="surname"><span jhiTranslate="mtrtApp.donator.surname">Surname</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="paymentDate"><span jhiTranslate="mtrtApp.donator.paymentDate">Payment Date</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="amount"><span jhiTranslate="mtrtApp.donator.amount">Amount</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="message"><span jhiTranslate="mtrtApp.donator.message">Message</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="anonymous"><span jhiTranslate="mtrtApp.donator.anonymous">Anonymous</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="donators.id"><span jhiTranslate="mtrtApp.donator.donators">Donators</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let donator of donators ;trackBy: trackId">
+                    <td><a [routerLink]="['/donator', donator.id, 'view']">{{ donator.id }}</a></td>
+                    <td>{{ donator.name }}</td>
+                    <td>{{ donator.surname }}</td>
+                    <td>{{ donator.paymentDate | date:'mediumDate' }}</td>
+                    <td>{{ donator.amount }}</td>
+                    <td>{{ donator.message }}</td>
+                    <td>{{ donator.anonymous }}</td>
+                    <td>
+                        <div *ngIf="donator.donators">
+                            <a [routerLink]="['/treat', donator.donators?.id, 'view']" >{{ donator.donators?.id }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/donator', donator.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/donator', donator.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(donator)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="donators && donators.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+    </div>
+</div>

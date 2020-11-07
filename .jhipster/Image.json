@@ -1,0 +1,30 @@
+{
+  "name": "Image",
+  "fields": [
+    {
+      "fieldName": "image",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "treat",
+      "otherEntityRelationshipName": "image",
+      "relationshipName": "images",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20201107173630",
+  "entityTableName": "image",
+  "dto": "no",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}
