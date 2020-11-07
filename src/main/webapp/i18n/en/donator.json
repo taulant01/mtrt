@@ -1,0 +1,28 @@
+{
+  "mtrtApp": {
+    "donator": {
+      "home": {
+        "title": "Donators",
+        "createLabel": "Create a new Donator",
+        "createOrEditLabel": "Create or edit a Donator",
+        "notFound": "No Donators found"
+      },
+      "created": "A new Donator is created with identifier {{ param }}",
+      "updated": "A Donator is updated with identifier {{ param }}",
+      "deleted": "A Donator is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Donator {{ id }}?"
+      },
+      "detail": {
+        "title": "Donator"
+      },
+      "name": "Name",
+      "surname": "Surname",
+      "paymentDate": "Payment Date",
+      "amount": "Amount",
+      "message": "Message",
+      "anonymous": "Anonymous",
+      "donators": "Donators"
+    }
+  }
+}

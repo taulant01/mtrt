@@ -1,0 +1,56 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="donator">
+            <h2><span jhiTranslate="mtrtApp.donator.detail.title">Donator</span> {{ donator.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="mtrtApp.donator.name">Name</span></dt>
+                <dd>
+                    <span>{{ donator.name }}</span>
+                </dd>
+                <dt><span jhiTranslate="mtrtApp.donator.surname">Surname</span></dt>
+                <dd>
+                    <span>{{ donator.surname }}</span>
+                </dd>
+                <dt><span jhiTranslate="mtrtApp.donator.paymentDate">Payment Date</span></dt>
+                <dd>
+                    <span>{{ donator.paymentDate }}</span>
+                </dd>
+                <dt><span jhiTranslate="mtrtApp.donator.amount">Amount</span></dt>
+                <dd>
+                    <span>{{ donator.amount }}</span>
+                </dd>
+                <dt><span jhiTranslate="mtrtApp.donator.message">Message</span></dt>
+                <dd>
+                    <span>{{ donator.message }}</span>
+                </dd>
+                <dt><span jhiTranslate="mtrtApp.donator.anonymous">Anonymous</span></dt>
+                <dd>
+                    <span>{{ donator.anonymous }}</span>
+                </dd>
+                <dt><span jhiTranslate="mtrtApp.donator.donators">Donators</span></dt>
+                <dd>
+                    <div *ngIf="donator.donators">
+                        <a [routerLink]="['/treat', donator.donators?.id, 'view']">{{ donator.donators?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/donator', donator.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

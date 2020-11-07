@@ -1,0 +1,27 @@
+{
+  "mtrtApp": {
+    "treat": {
+      "home": {
+        "title": "Treats",
+        "createLabel": "Create a new Treat",
+        "createOrEditLabel": "Create or edit a Treat",
+        "notFound": "No Treats found"
+      },
+      "created": "A new Treat is created with identifier {{ param }}",
+      "updated": "A Treat is updated with identifier {{ param }}",
+      "deleted": "A Treat is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Treat {{ id }}?"
+      },
+      "detail": {
+        "title": "Treat"
+      },
+      "crock": "Crock",
+      "title": "Title",
+      "description": "Description",
+      "purchaseLink": "Purchase Link",
+      "generatedLink": "Generated Link",
+      "user": "User"
+    }
+  }
+}
