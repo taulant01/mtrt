@@ -9,6 +9,10 @@ import { ITreat, Treat } from 'app/shared/model/treat.model';
 import { TreatService } from './treat.service';
 import { IUser } from 'app/core/user/user.model';
 import { UserService } from 'app/core/user/user.service';
+import { IImage } from 'app/shared/model/image.model';
+import { ImageService } from 'app/entities/image/image.service';
+
+type SelectableEntity = IUser | IImage;
 
 @Component({
   selector: 'jhi-treat-update',
@@ -17,6 +21,7 @@ import { UserService } from 'app/core/user/user.service';
 export class TreatUpdateComponent implements OnInit {
   isSaving = false;
   users: IUser[] = [];
+  images: IImage[] = [];
 
   editForm = this.fb.group({
     id: [],
@@ -26,11 +31,13 @@ export class TreatUpdateComponent implements OnInit {
     purchaseLink: [],
     generatedLink: [],
     user: [],
+    image: [],
   });
 
   constructor(
     protected treatService: TreatService,
     protected userService: UserService,
+    protected imageService: ImageService,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder
   ) {}
@@ -40,6 +47,8 @@ export class TreatUpdateComponent implements OnInit {
       this.updateForm(treat);
 
       this.userService.query().subscribe((res: HttpResponse<IUser[]>) => (this.users = res.body || []));
+
+      this.imageService.query().subscribe((res: HttpResponse<IImage[]>) => (this.images = res.body || []));
     });
   }
 
@@ -52,6 +61,7 @@ export class TreatUpdateComponent implements OnInit {
       purchaseLink: treat.purchaseLink,
       generatedLink: treat.generatedLink,
       user: treat.user,
+      image: treat.image,
     });
   }
 
@@ -79,6 +89,7 @@ export class TreatUpdateComponent implements OnInit {
       purchaseLink: this.editForm.get(['purchaseLink'])!.value,
       generatedLink: this.editForm.get(['generatedLink'])!.value,
       user: this.editForm.get(['user'])!.value,
+      image: this.editForm.get(['image'])!.value,
     };
   }
 
@@ -98,7 +109,7 @@ export class TreatUpdateComponent implements OnInit {
     this.isSaving = false;
   }
 
-  trackById(index: number, item: IUser): any {
+  trackById(index: number, item: SelectableEntity): any {
     return item.id;
   }
 }

@@ -48,6 +48,14 @@
                         <option [ngValue]="userOption.id === editForm.get('user')!.value?.id ? editForm.get('user')!.value : userOption" *ngFor="let userOption of users; trackBy: trackById">{{ userOption.id }}</option>
                     </select>
                 </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mtrtApp.treat.image" for="field_image">Image</label>
+                    <select class="form-control" id="field_image" name="image" formControlName="image">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="imageOption.id === editForm.get('image')!.value?.id ? editForm.get('image')!.value : imageOption" *ngFor="let imageOption of images; trackBy: trackById">{{ imageOption.id }}</option>
+                    </select>
+                </div>
             </div>
 
             <div>

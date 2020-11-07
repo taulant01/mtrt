@@ -1,4 +1,5 @@
 import { IUser } from 'app/core/user/user.model';
+import { IImage } from 'app/shared/model/image.model';
 
 export interface ITreat {
   id?: number;
@@ -8,6 +9,7 @@ export interface ITreat {
   purchaseLink?: string;
   generatedLink?: string;
   user?: IUser;
+  image?: IImage;
 }
 
 export class Treat implements ITreat {
@@ -18,6 +20,7 @@ export class Treat implements ITreat {
     public description?: string,
     public purchaseLink?: string,
     public generatedLink?: string,
-    public user?: IUser
+    public user?: IUser,
+    public image?: IImage
   ) {}
 }

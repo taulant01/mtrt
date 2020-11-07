@@ -9,8 +9,6 @@ import { JhiDataUtils, JhiFileLoadError, JhiEventManager, JhiEventWithContent } 
 import { IImage, Image } from 'app/shared/model/image.model';
 import { ImageService } from './image.service';
 import { AlertError } from 'app/shared/alert/alert-error.model';
-import { ITreat } from 'app/shared/model/treat.model';
-import { TreatService } from 'app/entities/treat/treat.service';
 
 @Component({
   selector: 'jhi-image-update',
@@ -18,20 +16,17 @@ import { TreatService } from 'app/entities/treat/treat.service';
 })
 export class ImageUpdateComponent implements OnInit {
   isSaving = false;
-  treats: ITreat[] = [];
 
   editForm = this.fb.group({
     id: [],
     image: [],
     imageContentType: [],
-    images: [],
   });
 
   constructor(
     protected dataUtils: JhiDataUtils,
     protected eventManager: JhiEventManager,
     protected imageService: ImageService,
-    protected treatService: TreatService,
     protected elementRef: ElementRef,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder
@@ -40,8 +35,6 @@ export class ImageUpdateComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ image }) => {
       this.updateForm(image);
-
-      this.treatService.query().subscribe((res: HttpResponse<ITreat[]>) => (this.treats = res.body || []));
     });
   }
 
@@ -50,7 +43,6 @@ export class ImageUpdateComponent implements OnInit {
       id: image.id,
       image: image.image,
       imageContentType: image.imageContentType,
-      images: image.images,
     });
   }
 
@@ -100,7 +92,6 @@ export class ImageUpdateComponent implements OnInit {
       id: this.editForm.get(['id'])!.value,
       imageContentType: this.editForm.get(['imageContentType'])!.value,
       image: this.editForm.get(['image'])!.value,
-      images: this.editForm.get(['images'])!.value,
     };
   }
 
@@ -118,9 +109,5 @@ export class ImageUpdateComponent implements OnInit {
 
   protected onSaveError(): void {
     this.isSaving = false;
-  }
-
-  trackById(index: number, item: ITreat): any {
-    return item.id;
   }
 }

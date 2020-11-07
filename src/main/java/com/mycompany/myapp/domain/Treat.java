@@ -39,6 +39,10 @@ public class Treat implements Serializable {
     @JsonIgnoreProperties(value = "treats", allowSetters = true)
     private User user;
 
+    @ManyToOne
+    @JsonIgnoreProperties(value = "images", allowSetters = true)
+    private Image image;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
         return id;
@@ -124,6 +128,19 @@ public class Treat implements Serializable {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Image getImage() {
+        return image;
+    }
+
+    public Treat image(Image image) {
+        this.image = image;
+        return this;
+    }
+
+    public void setImage(Image image) {
+        this.image = image;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 

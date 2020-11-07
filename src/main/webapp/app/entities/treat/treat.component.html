@@ -29,6 +29,7 @@
                     <th scope="col"  jhiSortBy="purchaseLink"><span jhiTranslate="mtrtApp.treat.purchaseLink">Purchase Link</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="generatedLink"><span jhiTranslate="mtrtApp.treat.generatedLink">Generated Link</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="user.id"><span jhiTranslate="mtrtApp.treat.user">User</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="image.id"><span jhiTranslate="mtrtApp.treat.image">Image</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -42,6 +43,11 @@
                     <td>{{ treat.generatedLink }}</td>
                     <td>
                         {{ treat.user?.id }}
+                    </td>
+                    <td>
+                        <div *ngIf="treat.image">
+                            <a [routerLink]="['/image', treat.image?.id, 'view']" >{{ treat.image?.id }}</a>
+                        </div>
                     </td>
                     <td class="text-right">
                         <div class="btn-group">
